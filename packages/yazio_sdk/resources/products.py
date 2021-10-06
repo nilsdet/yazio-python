@@ -18,8 +18,6 @@ class Products(Resource):
                 "query": query,
             },
         )
-        print(r.status_code)
-        print(r.json())
         return [ProductSearchResult(**result) for result in r.json()]
 
     def suggestions(
