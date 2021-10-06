@@ -18,7 +18,7 @@ class YazioClient:
             }
         )
         # Resources
-        self.product_suggestions = ProductSuggestions(self)
+        self.products = Products(self)
 
     def get(self, path: str, *args, **kwargs):
         return self.session.get("https://yzapi.yazio.com/v10" + path, *args, **kwargs)

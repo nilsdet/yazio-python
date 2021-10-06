@@ -1,2 +1,2 @@
-__all__ = ["ProductSuggestion"]
-from .product_suggestion import ProductSuggestion
+__all__ = ["ProductSuggestion", "ProductSearchResult"]
+from .products import ProductSuggestion, ProductSearchResult
