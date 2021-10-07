@@ -1,9 +1,9 @@
-from fastapi import FastAPI
+from starlette.applications import Starlette
 
 from .app import YazioGraphQL
 from .schema import schema
 
-api = FastAPI()
+api = Starlette()
 
 app = YazioGraphQL(schema)
 
