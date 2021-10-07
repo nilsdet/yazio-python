@@ -1,2 +1,3 @@
-__all__ = ["Products"]
+__all__ = ["ConsumedItems", "Products"]
+from .consumed_items import ConsumedItems
 from .products import Products

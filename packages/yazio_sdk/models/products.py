@@ -1,3 +1,4 @@
+import datetime
 from typing import Optional
 
 from pydantic import BaseModel
@@ -30,3 +31,12 @@ class ProductFavorite(BaseModel):
     serving: Optional[str]
     serving_quantity: Optional[float]
     product_id: str
+
+
+class CreateConsumedProductInput(BaseModel):
+    product_id: str
+    amount: float
+    serving: Optional[str] = None
+    serving_quantity: Optional[float] = None
+    date: datetime.datetime
+    daytime: str

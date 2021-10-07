@@ -4,6 +4,7 @@ from yazio_sdk import (
     ProductSuggestion as ProductSuggestionModel,
     ProductSearchResult as ProductSearchResultModel,
     ProductFavorite as ProductFavoriteModel,
+    CreateConsumedProductInput as CreateConsumedProductInputModel,
 )
 
 
@@ -39,4 +40,12 @@ class ProductSearchResult:
     fields=["id", "amount", "serving", "serving_quantity", "product_id"],
 )
 class ProductFavorite:
+    pass
+
+
+@strawberry.experimental.pydantic.input(
+    model=CreateConsumedProductInputModel,
+    fields=["product_id", "amount", "serving", "serving_quantity", "date", "daytime"],
+)
+class CreateConsumedProductInput:
     pass

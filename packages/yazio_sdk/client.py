@@ -18,7 +18,13 @@ class YazioClient:
             }
         )
         # Resources
+        self.consumed_items = ConsumedItems(self)
         self.products = Products(self)
 
+    def request(self, method: str, path: str, *args, **kwargs):
+        return self.session.request(
+            method, "https://yzapi.yazio.com/v10" + path, *args, **kwargs
+        )
+
     def get(self, path: str, *args, **kwargs):
-        return self.session.get("https://yzapi.yazio.com/v10" + path, *args, **kwargs)
+        return self.request("get", path, *args, **kwargs)
