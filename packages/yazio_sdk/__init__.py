@@ -1,7 +1,7 @@
 """An unofficial python sdk for the yazio rest api."""
-from . import client, enums, models
+from . import models
 
-__all__ = [*client.__all__, *enums.__all__, *models.__all__]
-from .client import *
-from .enums import *
+__all__ = ["YazioClient", "DayTime", *models.__all__]
+from .client import YazioClient
+from .enums import DayTime
 from .models import *
