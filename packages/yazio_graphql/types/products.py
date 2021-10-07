@@ -3,6 +3,7 @@ import strawberry
 from yazio_sdk import (
     ProductSuggestion as ProductSuggestionModel,
     ProductSearchResult as ProductSearchResultModel,
+    ProductFavorite as ProductFavoriteModel,
 )
 
 
@@ -30,4 +31,12 @@ class ProductSuggestion:
     ],
 )
 class ProductSearchResult:
+    pass
+
+
+@strawberry.experimental.pydantic.type(
+    model=ProductFavoriteModel,
+    fields=["id", "amount", "serving", "serving_quantity", "product_id"],
+)
+class ProductFavorite:
     pass

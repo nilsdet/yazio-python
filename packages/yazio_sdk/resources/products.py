@@ -3,7 +3,7 @@ from typing import Union
 
 from .base import Resource
 from ..enums import DayTime
-from ..models import ProductSearchResult, ProductSuggestion
+from ..models import ProductSearchResult, ProductSuggestion, ProductFavorite
 
 
 class Products(Resource):
@@ -31,3 +31,7 @@ class Products(Resource):
             },
         )
         return [ProductSuggestion(**suggestion) for suggestion in r.json()]
+
+    def favorites(self) -> list[ProductFavorite]:
+        r = self.client.get("/user/favorites/product")
+        return [ProductFavorite(**favorite) for favorite in r.json()]
