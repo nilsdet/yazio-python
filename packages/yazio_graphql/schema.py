@@ -1,17 +1,16 @@
 import datetime
-from typing import Optional
 
 import strawberry
 from strawberry import Schema
-from strawberry.arguments import UNSET
+from strawberry.tools import create_type
 
 from .enums import DayTime
 from .info import Info
+from .mutations import mutations
 from .types import (
     ProductSuggestion,
     ProductSearchResult,
     ProductFavorite,
-    CreateConsumedProductInput,
 )
 
 
@@ -34,14 +33,4 @@ class Query:
         return info.context.client.products.favorites()
 
 
-@strawberry.type
-class Mutation:
-    @strawberry.field
-    def create_consumed_items(
-        self, info: Info, products: Optional[list[CreateConsumedProductInput]] = UNSET
-    ) -> bool:
-        info.context.client.consumed_items.create(products)
-        return True
-
-
-schema = Schema(query=Query, mutation=Mutation)
+schema = Schema(query=Query, mutation=create_type("Mutation", fields=mutations))
